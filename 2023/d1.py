@@ -49,18 +49,26 @@ numlist = ["0","1","2","3","4","5","6","7","8","9"]
 
 calibrationValue = 0  # Variable to hold accumlated calibration value
 
+def scanline(line):
+    for char in line:
+        if char in numlist:
+            return char
+        
 for line in Lines:
     bkline = line[::-1]
-    for c in line:
-        if c in numlist:
-            firstdigit = c
-            break
-    for c in bkline:
-        if c in numlist:
-            lastdigit = c
-            break
+    firstdigit = scanline(line)
+    lastdigit = scanline(bkline)
+#    for c in line:
+#        if c in numlist:
+#            firstdigit = c
+#            break
+#    for c in bkline:
+#        if c in numlist:
+#            lastdigit = c
+#            break
     digits = firstdigit + lastdigit
     intdigits = int(digits)  # Convert string digits to integer
     calibrationValue += intdigits  # Add int value to calibrationValue
 
-print("Calibration Values = ",calibrationValue)
+if __name__ == '__main__':
+    print("Calibration Values = ",calibrationValue)
