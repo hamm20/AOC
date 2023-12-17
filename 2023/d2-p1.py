@@ -67,31 +67,28 @@ def validateGame(list):
     for x in mg: 
         for key,value in cubes.items():
             if value in x:
-                print("{} is in {}".format(value,x))  
+#                print("{} is in {}".format(value,x))  
                 valueCube = x.split(",")
                 for y in valueCube:
-                    y = y.strip()
-                    y = y.split(" ")
+                    y = y.strip().split(" ")
                     if value in y:
                         if key < int(y[0]):
                             return False
                 
-
-
-
+                
 def main():
     count = 0
     goodGameList = []
     for line in Lines:
         count += 1
         gamelist = games(line)
-        print("Game: {}".format(count))
+#        print("Game: {}".format(count))
         check = validateGame(gamelist)
         if check != False:
             goodGameList.append(count)
 
-    print("Games: {}".format(goodGameList))
-    print("Game Sum = ",sum(goodGameList))    
+#    print("Games: {}".format(goodGameList))
+    print("Game Sum =",sum(goodGameList))    
 
 if __name__ == '__main__':
     main()
